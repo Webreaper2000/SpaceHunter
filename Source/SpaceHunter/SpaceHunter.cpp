@@ -3,4 +3,4 @@
 #include "SpaceHunter.h"
 #include "Modules/ModuleManager.h"
 
-IMPLEMENT_PRIMARY_GAME_MODULE( FDefaultGameModuleImpl, SpaceHunter, "SpaceHunter" );
+IMPLEMENT_P     gRIMARY_GAME_MODULE( FDefaultGameModuleImpl, SpaceHunter, "SpaceHunter" );
