@@ -15,6 +15,12 @@ class SPACEHUNTER_API ASpaceHunterGameModeBase : public AGameModeBase
 	GENERATED_BODY()
 	
 	
-	
+public:
+
+	ASpaceHunterGameModeBase();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Object)
+		FName NameTest;
+
 	
 };

@@ -6,7 +6,7 @@
 #include "LevelChange.generated.h"
 
 UCLASS()
-class SPACEHUNTERX_API ALevelChange : public AActor
+class SPACEHUNTER_API ALevelChange : public AActor
 {
 	GENERATED_BODY()
 	

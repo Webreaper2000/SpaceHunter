@@ -7,7 +7,7 @@
 #include "PlayerPawn.generated.h"
 
 UCLASS()
-class SPACEHUNTERX_API APlayerPawn : public APawn
+class SPACEHUNTER_API APlayerPawn : public APawn
 {
 	GENERATED_BODY()
 

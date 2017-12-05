@@ -5,3 +5,9 @@
 
 
 
+ASpaceHunterGameModeBase::ASpaceHunterGameModeBase()
+{
+
+	NameTest = "test2";
+
+}
