@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SpaceHunterX.h"
+#include "SpaceHunter.h"
 #include "LevelChange.h"
-#include "SpaceHunterXGameMode.h"
+#include "SpaceHunterGameModeBase.h"
 
 // Sets default values
 ALevelChange::ALevelChange()
