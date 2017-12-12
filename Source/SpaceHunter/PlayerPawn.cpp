@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-#include "SpaceHunter.h"
 #include "PlayerPawn.h"
+#include "SpaceHunter.h"
+
 
 
 // Sets default values
@@ -11,7 +11,9 @@ APlayerPawn::APlayerPawn()
 	PrimaryActorTick.bCanEverTick = true;
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
-	collision = CreateDefaultSubobject<UBoxComponent>(TEXT("collision"));
+	APlayerPawn::APlayerPawn(const FObjectInitializer& ObjectInitializer)
+
+	collision = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(TEXT("collision"));
 	RootComponent = collision;
 	collision->SetBoxExtent(FVector(7.0f, 5.0f, 6.6f));
 	collision->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
@@ -50,20 +52,20 @@ APlayerPawn::APlayerPawn()
 
 
 
-	
+
 }
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
-void APlayerPawn::Tick( float DeltaTime )
+void APlayerPawn::Tick(float DeltaTime)
 {
-	Super::Tick( DeltaTime );
+	Super::Tick(DeltaTime);
 
 }
 
