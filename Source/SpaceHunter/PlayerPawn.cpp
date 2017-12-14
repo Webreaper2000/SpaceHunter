@@ -1,19 +1,35 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+
 #include "PlayerPawn.h"
-#include "SpaceHunter.h"
+#include "PaperSpriteComponent.h"
+#include "PaperFlipbookComponent.h"
+//Components
+#include "Components/BoxComponent.h"
+#include "Components/InputComponent.h"
+
+//Frameworks
+#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/FloatingPawnMovement.h"
+
+//Cameras
+#include "Camera/CameraComponent.h"
 
 
+//UObjects
+#include "UObject/ConstructorHelpers.h"
+
+
+//I dont know how we should divide up the includes
 
 // Sets default values
 APlayerPawn::APlayerPawn()
 {
-	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	
 	PrimaryActorTick.bCanEverTick = true;
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
-	APlayerPawn::APlayerPawn(const FObjectInitializer& ObjectInitializer)
-
-	collision = ObjectInitializer.CreateDefaultSubobject<UBoxComponent>(TEXT("collision"));
+	collision = CreateDefaultSubobject<UBoxComponent>(TEXT("collision"));
 	RootComponent = collision;
 	collision->SetBoxExtent(FVector(7.0f, 5.0f, 6.6f));
 	collision->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
@@ -28,11 +44,11 @@ APlayerPawn::APlayerPawn()
 
 
 	UCameraComponent* PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
-	Player = CreateDefaultSubobject< UPaperSpriteComponent>(TEXT("PlayerSprite"));
+	/*Player = CreateDefaultSubobject< UPaperSpriteComponent>(TEXT("PlayerSprite"));
 	Player->SetSprite(ConstructorHelpers::FObjectFinder<UPaperSprite>(TEXT("PaperSprite'/Game/Sprites/Character_sprites/character_Sprite_0.character_Sprite_0'")).Object);
 	Player->SetRelativeLocation(FVector(0.0f, 0.0f, 1.0f));
 	Player->SetupAttachment(RootComponent);
-	Player->SetCollisionProfileName(TEXT("Collision"));
+	Player->SetCollisionProfileName(TEXT("Collision"));*/
 
 	USpringArmComponent *springArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 
@@ -50,16 +66,13 @@ APlayerPawn::APlayerPawn()
 	PlayerCamera->ProjectionMode = ECameraProjectionMode::Orthographic;
 	PlayerCamera->SetupAttachment(springArm, USpringArmComponent::SocketName);
 
-
-
-
 }
 
 // Called when the game starts or when spawned
 void APlayerPawn::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 }
 
 // Called every frame
@@ -70,13 +83,12 @@ void APlayerPawn::Tick(float DeltaTime)
 }
 
 // Called to bind functionality to input
-void APlayerPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(InputComponent);
-
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
 	InputComponent->BindAxis("MoveX", this, &APlayerPawn::MoveX_Axis);
 	InputComponent->BindAxis("MoveZ", this, &APlayerPawn::MoveZ_Axis);
-
 
 }
 
