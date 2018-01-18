@@ -1,31 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "PlayerPawn.h"
-#include "PaperSpriteComponent.h"
-#include "PaperFlipbookComponent.h"
-//Components
-#include "Components/BoxComponent.h"
-#include "Components/InputComponent.h"
 
-//Frameworks
-#include "GameFramework/SpringArmComponent.h"
-#include "GameFramework/FloatingPawnMovement.h"
-
-//Cameras
-#include "Camera/CameraComponent.h"
-
-
-//UObjects
-#include "UObject/ConstructorHelpers.h"
-
-
-//I dont know how we should divide up the includes
 
 // Sets default values
 APlayerPawn::APlayerPawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	
 	PrimaryActorTick.bCanEverTick = true;
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 
@@ -44,9 +24,8 @@ APlayerPawn::APlayerPawn()
 
 
 	UCameraComponent* PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
-
-	Player = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("PlayerSprite"));
-	//Player->SetSprite(ConstructorHelpers::FObjectFinder<UPaperSprite>(TEXT("PaperSprite'/Game/Sprites/Character_sprites/character_Sprite_0.character_Sprite_0'")).Object);
+	Player = CreateDefaultSubobject< UPaperSpriteComponent>(TEXT("PlayerSprite"));
+	Player->SetSprite(ConstructorHelpers::FObjectFinder<UPaperSprite>(TEXT("PaperSprite'/Game/Sprites/Character_sprites/character_Sprite_0.character_Sprite_0'")).Object);
 	Player->SetRelativeLocation(FVector(0.0f, 0.0f, 1.0f));
 	Player->SetupAttachment(RootComponent);
 	Player->SetCollisionProfileName(TEXT("Collision"));
@@ -67,6 +46,9 @@ APlayerPawn::APlayerPawn()
 	PlayerCamera->ProjectionMode = ECameraProjectionMode::Orthographic;
 	PlayerCamera->SetupAttachment(springArm, USpringArmComponent::SocketName);
 
+
+
+
 }
 
 // Called when the game starts or when spawned
@@ -86,23 +68,10 @@ void APlayerPawn::Tick(float DeltaTime)
 // Called to bind functionality to input
 void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	
+	Super::SetupPlayerInputComponent(InputComponent);
+
 	InputComponent->BindAxis("MoveX", this, &APlayerPawn::MoveX_Axis);
 	InputComponent->BindAxis("MoveZ", this, &APlayerPawn::MoveZ_Axis);
 
 }
 
-void APlayerPawn::MoveX_Axis(float AxisValue)
-{
-	FVector input = FVector(AxisValue, 0.0f, 0.0f);
-	AddMovementInput(input);
-
-
-}
-void APlayerPawn::MoveZ_Axis(float AxisValue)
-{
-	FVector Input = FVector(0.0f, 0.0f, AxisValue);
-	AddMovementInput(Input);
-
-}

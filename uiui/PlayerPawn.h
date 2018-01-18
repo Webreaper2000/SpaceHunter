@@ -1,12 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+
 #pragma once
-
-
-
+#include "PaperSpriteComponent.h"
+#include "PaperFlipbookComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "PlayerPawn.generated.h"
-
 
 UCLASS()
 class SPACEHUNTER_API APlayerPawn : public APawn
@@ -16,17 +15,6 @@ class SPACEHUNTER_API APlayerPawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
-
-	//added class to these makes it work,
-
-	UPROPERTY(EditAnywhere)
-	class	UPaperSpriteComponent* Player;
-
-	UPROPERTY(EditAnywhere)
-	class	UFloatingPawnMovement* PlayerControl;
-
-	UPROPERTY(EditAnywhere)
-	class	UBoxComponent* collision;
 
 protected:
 	// Called when the game starts or when spawned
@@ -39,7 +27,20 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+
+	UPROPERTY(EditAnywhere)
+		UPaperSpriteComponent* Player;
+
+	UPROPERTY(EditAnywhere)
+		UFloatingPawnMovement* PlayerControl;
+
+	UPROPERTY(EditAnywhere)
+		UBoxComponent *collision;
+
+
+
 	void	MoveX_Axis(float AxisValue);
 	void MoveZ_Axis(float AxisValue);
+
 	
 };
