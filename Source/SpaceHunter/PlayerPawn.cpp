@@ -44,12 +44,11 @@ APlayerPawn::APlayerPawn()
 
 
 	UCameraComponent* PlayerCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("PlayerCamera"));
-
-	Player = CreateDefaultSubobject<UPaperSpriteComponent>(TEXT("PlayerSprite"));
-	//Player->SetSprite(ConstructorHelpers::FObjectFinder<UPaperSprite>(TEXT("PaperSprite'/Game/Sprites/Character_sprites/character_Sprite_0.character_Sprite_0'")).Object);
+	/*Player = CreateDefaultSubobject< UPaperSpriteComponent>(TEXT("PlayerSprite"));
+	Player->SetSprite(ConstructorHelpers::FObjectFinder<UPaperSprite>(TEXT("PaperSprite'/Game/Sprites/Character_sprites/character_Sprite_0.character_Sprite_0'")).Object);
 	Player->SetRelativeLocation(FVector(0.0f, 0.0f, 1.0f));
 	Player->SetupAttachment(RootComponent);
-	Player->SetCollisionProfileName(TEXT("Collision"));
+	Player->SetCollisionProfileName(TEXT("Collision"));*/
 
 	USpringArmComponent *springArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 

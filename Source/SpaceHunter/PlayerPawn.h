@@ -1,4 +1,4 @@
-+// Fill out your copyright notice in the Description page of Project Settings.
+// Fill out your copyright notice in the Description page of Project Settings.
 #pragma once
 
 
@@ -17,10 +17,10 @@ public:
 	// Sets default values for this pawn's properties
 	APlayerPawn();
 
-	//added class to these makes it work,
+	//added class to these makes it work, paper2D stuff needs to be looked into
 
-	UPROPERTY(EditAnywhere)
-	class	UPaperSpriteComponent* Player;
+	/*UPROPERTY(EditAnywhere)
+	class	UPaperSpriteComponent* Player;*/
 
 	UPROPERTY(EditAnywhere)
 	class	UFloatingPawnMovement* PlayerControl;
